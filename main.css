@@ -163,7 +163,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ============ УСЛУГИ ============ */
 .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
-@media (max-width: 1100px) { .services { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 980px) { .services { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px)  { .services { grid-template-columns: 1fr; } }
 .card {
   padding: 28px 26px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
@@ -332,7 +332,7 @@ a { color: inherit; text-decoration: none; }
   border-color: #00e0f8;
   color: #00e0f8;
 }
-@media (max-width: 1100px) {
+@media (max-width: 980px) {
   .lang-switch--desktop { display: none; }
   .lang-switch--mobile { display: flex; }
 }
@@ -647,8 +647,19 @@ a { color: inherit; text-decoration: none; }
 .nav__cta--mobile { display: none; }
 .nav__lang-mobile { display: none; }
 
+/* ============ КОМПАКТНЫЙ ДЕСКТОП (981–1180) — шапка сжимается, hero/about остаются 2-колоночными ============ */
+@media (min-width: 981px) and (max-width: 1180px) {
+  .nav__inner { gap: 14px; }
+  .nav__links { gap: 10px; }
+  .nav__links a { font-size: 13.5px; }
+  .ai-badge { padding: 6px 10px 6px 8px; font-size: 11px; }
+  .nav__cta--desktop { padding: 10px 18px; font-size: 14px; }
+  .lang-switch__trigger { padding: 8px 14px; font-size: 13px; }
+  .nav__logo img { height: 58px; }
+}
+
 /* ============ МОБИЛЬНАЯ ВЕРСИЯ ============ */
-@media (max-width: 1100px) {
+@media (max-width: 980px) {
   .nav__inner { display: flex; justify-content: space-between; padding: 10px var(--pad); }
   .nav__right { display: contents; }
   .nav__logo img { height: 56px; }
@@ -767,8 +778,8 @@ a { color: inherit; text-decoration: none; }
 /* Карточки кейсов всегда 2 колонки 50/50 на десктопе, на мобильной — в столбик */
 .case { grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; }
 
-/* Кейсы — в столбик от 1100px и ниже (планшет landscape + мобильный) */
-@media (max-width: 1100px) {
+/* Кейсы — в столбик только на мобильной/планшете (≤980), на компактном десктопе остаются 2 колонки */
+@media (max-width: 980px) {
   #work .case { grid-template-columns: 1fr !important; }
   #work .case .case__visual--shot { order: 0 !important; }
   #work .case .case__body { order: 1 !important; }
