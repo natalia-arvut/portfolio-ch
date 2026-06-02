@@ -85,7 +85,7 @@ const T = {
     'p.brand-site.x2': '+ Multi-page site instead of a landing',
     'p.brand-site.x3': '+ Additional language version',
     'p.brand-site.x4': '+ Promo video (or AI avatar video)',
-    'p.seo.included': 'Basic on-page SEO is included (meta tags, speed, Schema, Open Graph, sitemap).',
+    'p.seo.included': 'Basic on-page SEO is included in the price (meta tags, speed, Schema, Open Graph, sitemap).',
     'p.seo.promo': '+ SEO promotion (monthly retainer)',
     'p.seo.promo.price': 'from CHF 2 500/mo',
     'p.seo.audit': '+ SEO audit (one-off)',
@@ -99,6 +99,7 @@ const T = {
     'p.landing.x3': '+ Animations and effects',
     'p.landing.x4': '+ CRM, payments, messengers',
     'p.landing.x5': '+ Promo video (or AI avatar video)',
+    'p.landing.x6': '+ Additional language version',
 
     'p.multi.h': 'Multi-page website',
     'p.multi.p': 'Corporate site with sections, a catalog or a blog.',
@@ -109,6 +110,7 @@ const T = {
     'p.multi.x4': '+ Additional language version',
     'p.multi.x5': '+ CRM, payments, messengers',
     'p.multi.x6': '+ Promo video (or AI avatar video)',
+    'p.multi.x7': '+ Additional page (beyond the 5 in the base)',
 
     'p.apps.h': 'App development',
     'p.apps.p': 'Web apps and platforms — from prototype to a live product.',
