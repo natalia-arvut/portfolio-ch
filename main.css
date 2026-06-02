@@ -264,6 +264,66 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; color: var(--text);
 }
 
+/* ============ ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ (EN / DE / FR / IT) ============ */
+.lang-switch--desktop {
+  position: relative;
+  display: inline-block;
+  margin-right: 12px;
+}
+.lang-switch__trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: 8px;
+  background: rgba(255,255,255,.03); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Geist', sans-serif; font-weight: 600; font-size: 13px;
+  cursor: pointer; transition: border-color .2s, background .2s;
+}
+.lang-switch__trigger:hover { border-color: #00e0f8; background: rgba(0, 224, 248,.06); }
+.lang-switch__trigger svg { opacity: .7; transition: transform .2s; }
+.lang-switch.open .lang-switch__trigger svg { transform: rotate(180deg); }
+.lang-switch__current { letter-spacing: .5px; }
+.lang-switch__menu {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  min-width: 170px;
+  display: none; flex-direction: column;
+  background: #0d1230; border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.45);
+  padding: 6px; z-index: 50;
+}
+.lang-switch.open .lang-switch__menu { display: flex; }
+.lang-switch__menu button {
+  text-align: left; padding: 9px 12px; border-radius: 6px;
+  background: transparent; border: none; color: var(--text);
+  font-family: 'Geist', sans-serif; font-size: 13px; cursor: pointer;
+  transition: background .15s;
+}
+.lang-switch__menu button:hover { background: rgba(0, 224, 248,.08); }
+.lang-switch__menu button.active {
+  background: rgba(0, 224, 248,.12);
+  color: #00e0f8; font-weight: 600;
+}
+
+/* На мобильной — простые 4 кнопки внутри развернутого меню */
+.lang-switch--mobile {
+  display: none;
+  gap: 6px; margin-top: 16px;
+  padding-top: 16px; border-top: 1px solid var(--border);
+}
+.lang-switch--mobile button {
+  flex: 1; padding: 10px 0; border-radius: 8px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  color: var(--text); font-family: 'Geist', sans-serif; font-weight: 600; font-size: 13px;
+  cursor: pointer; transition: background .15s, border-color .15s;
+}
+.lang-switch--mobile button:hover { border-color: #00e0f8; }
+.lang-switch--mobile button.active {
+  background: rgba(0, 224, 248,.15);
+  border-color: #00e0f8; color: #00e0f8;
+}
+@media (max-width: 900px) {
+  .lang-switch--desktop { display: none; }
+  .lang-switch--mobile { display: flex; }
+}
+
 /* ============ СОЦИАЛЬНЫЕ ССЫЛКИ (About me) ============ */
 .about__socials {
   display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px;
