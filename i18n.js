@@ -10,7 +10,7 @@ const T = {
     'nav.services': 'Services',
     'nav.portfolio': 'Portfolio',
     'nav.pricing': 'Pricing',
-    'nav.about': 'About',
+    'nav.about': 'About me',
     'nav.faq': 'FAQ',
     'nav.cta': 'Discuss a project',
 
