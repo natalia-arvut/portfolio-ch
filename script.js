@@ -461,6 +461,21 @@ document.addEventListener('i18n:changed', () => {
   if (!modal.hidden && currentService) renderService(currentService);
 });
 
+// Click anywhere inside .price-row toggles the «How the price is built» panel
+document.querySelectorAll('.price-row').forEach(row => {
+  row.addEventListener('click', (e) => {
+    const det = row.querySelector('details.price-extras');
+    if (!det) return;
+    // Если клик пришёлся на саму ссылку-summary — пусть браузер сам сделает toggle, не мешаем
+    if (e.target.closest('summary')) return;
+    // Внутри уже открытого блока надстроек — не закрывать (чтобы можно было выделить текст и т.п.)
+    if (det.open && e.target.closest('details.price-extras')) return;
+    // Не перехватывать клики по ссылкам и кнопкам внутри строки
+    if (e.target.closest('a, button')) return;
+    det.open = !det.open;
+  });
+});
+
 const priceAnchors = {
   'brand-site': 'price-brand-site',
   'websites': 'price-websites',

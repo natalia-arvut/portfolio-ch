@@ -204,9 +204,11 @@ a { color: inherit; text-decoration: none; }
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
   padding: 24px clamp(22px, 3vw, 36px); border-bottom: 1px solid var(--border);
   transition: background .2s ease;
+  cursor: pointer; /* весь блок кликабелен — раскрывает «How the price is built» */
 }
 .price-row:last-child { border-bottom: 0; }
 .price-row:hover { background: rgba(255,255,255,.03); }
+.price-row a, .price-row button, .price-row summary { cursor: pointer; }
 .price-row--highlight { background: linear-gradient(90deg, rgba(0, 224, 248,.10), rgba(181,0,255,.06)) !important; transition: background .4s ease; }
 .price-row__info h3 { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
 .price-row__info p { color: var(--muted); font-size: 14px; }
@@ -223,12 +225,13 @@ a { color: inherit; text-decoration: none; }
 .price-extras { margin-top: 14px; }
 .price-extras summary {
   cursor: pointer; list-style: none;
-  display: inline-flex; align-items: center; gap: 6px;
-  font: 600 13px/1 'Geist', sans-serif; color: #00e0f8;
-  padding: 6px 0; border-bottom: 1px solid rgba(0, 224, 248,.3);
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 17px/1.1 'Geist', sans-serif; color: #00e0f8;
+  padding: 10px 0; border-bottom: 1px solid rgba(0, 224, 248,.4);
 }
+.price-extras summary:hover { color: #38ecff; border-bottom-color: rgba(0, 224, 248,.7); }
 .price-extras summary::-webkit-details-marker { display: none; }
-.price-extras summary::after { content: '↓'; transition: transform .2s; font-size: 11px; }
+.price-extras summary::after { content: '↓'; transition: transform .2s; font-size: 16px; line-height: 1; }
 .price-extras[open] summary::after { transform: rotate(180deg); }
 .price-extras__list {
   list-style: none; padding: 14px 0 8px; margin: 0;
