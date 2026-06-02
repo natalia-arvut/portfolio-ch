@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nataly — design &amp; development, turnkey</title>
+  <meta name="description" content="Brands, websites and apps built end-to-end with AI — from idea to launch. Switzerland." />
+  <meta property="og:title" content="Nataly — design &amp; development, turnkey" />
+  <meta property="og:description" content="Brands, websites and apps built end-to-end with AI — from idea to launch. Switzerland." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Unbounded:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="main.css?v=21" />
+  <style id="about-fix">
+    /* Компактное фото и сертификаты-thumbnails */
+    .about { grid-template-columns: auto 1fr !important; gap: 40px !important; align-items: start !important; }
+    .about__photo--avatar {
+      width: 200px !important; height: 200px !important; aspect-ratio: 1/1 !important;
+      max-width: none !important; min-width: 0; border-radius: 50%; overflow: hidden;
+      flex-shrink: 0; background: #ffffff;
+    }
+    .about__photo--avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .about__actions .btn { min-width: 200px; text-align: center; box-sizing: border-box; }
+    .about__photo--empty { background: linear-gradient(135deg, rgba(0, 224, 248,.15), rgba(246,0,255,.15)); }
+    .about__certs { display: flex !important; gap: 10px !important; flex-wrap: wrap; margin-bottom: 26px; }
+    .cert.cert--thumb {
+      width: 130px; height: 80px; padding: 0 !important; border: 1px solid var(--border) !important;
+      border-radius: 10px; overflow: hidden; cursor: pointer; background: rgba(255,255,255,.04);
+      transition: transform .2s, border-color .2s;
+    }
+    .cert.cert--thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cert.cert--thumb:hover { transform: translateY(-2px); border-color: #00e0f8 !important; }
+
+    /* Модалка просмотра сертификата */
+    .cert-modal { position: fixed; inset: 0; z-index: 200; display: none; align-items: center; justify-content: center; padding: 40px; background: rgba(7,10,26,.88); backdrop-filter: blur(8px); }
+    .cert-modal.open { display: flex; }
+    .cert-modal img { max-width: 90vw; max-height: 90vh; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
+    .cert-modal__close { position: absolute; top: 20px; right: 24px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,.1); border: 1px solid var(--border); color: #fff; font-size: 22px; cursor: pointer; z-index: 2; }
+    .cert-modal__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: #fff; font-size: 36px; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .2s, border-color .2s; z-index: 2; }
+    .cert-modal__nav:hover { background: rgba(0, 224, 248,.2); border-color: #00e0f8; }
+    .cert-modal__nav--prev { left: 24px; }
+    .cert-modal__nav--next { right: 24px; }
+    @media (max-width: 600px) {
+      .cert-modal__nav { width: 44px; height: 44px; font-size: 28px; }
+      .cert-modal__nav--prev { left: 8px; }
+      .cert-modal__nav--next { right: 8px; }
+    }
+    /* Чуть больше воздуха между карточками портфолио */
+    #work .cases { gap: 40px !important; }
+
+    @media (max-width: 760px) {
+      .about { grid-template-columns: 1fr !important; }
+      .about__photo--avatar { width: 160px !important; height: 160px !important; }
+    }
+  </style>
+  <style id="case-hardfix">
+    /* HARD FIX: 2 колонки, обложка с собственной пропорцией 16:9 */
+    #work .case {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      align-items: stretch !important;
+    }
+    #work .case > * { min-width: 0 !important; }
+    #work .case__visual--shot {
+      padding: 0 !important; min-height: 0 !important;
+      overflow: hidden; display: block;
+      width: 100%; height: 100%;
+      background-color: #11142a;
+      background-image: var(--shot);
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    #work .case__visual--shot img { display: none !important; }
+    @media (max-width: 1100px) {
+      #work .case { grid-template-columns: 1fr !important; }
+      #work .case__visual--shot { aspect-ratio: 16/9; height: auto !important; background-position: left top !important; }
+    }
+  </style>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- ШАПКА -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <div class="nav__left">
+        <a href="#hero" class="nav__logo">
+          <img src="assets/logo-nataly.png" alt="Натали — N design" />
+        </a>
+        <span class="ai-badge" aria-label="AI">
+          <span class="ai-badge__dot"></span>
+          <span class="ai-badge__text" data-i18n-html="ai.badge">в сотрудничестве с <b>AI</b></span>
+        </span>
+      </div>
+      <div class="nav__right">
+        <nav class="nav__links" id="navLinks">
+          <a href="#services" data-i18n="nav.services">Услуги</a>
+          <a href="#work" data-i18n="nav.portfolio">Портфолио</a>
+          <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+          <a href="#about" data-i18n="nav.about">Обо мне</a>
+          <a href="#faq" data-i18n="nav.faq">Частые вопросы</a>
+          <a href="#contact" class="nav__cta nav__cta--mobile" data-i18n="nav.cta">Discuss a project</a>
+        </nav>
+        <a href="#contact" class="nav__cta nav__cta--desktop" data-i18n="nav.cta">Discuss a project</a>
+      </div>
+      <button class="nav__burger" id="burger" aria-label="Меню" data-i18n-aria="a11y.menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__visual">
+      <img src="assets/hero-laptop.svg" alt="Дизайн и разработка" />
+    </div>
+    <div class="hero__text">
+      <p class="hero__eyebrow" data-i18n-html="hero.eyebrow">Графический &amp; веб-дизайнер · разработчик · AI</p>
+      <h1 class="hero__title">
+        <span class="grad-cyan" data-i18n="hero.t1">Бренды.</span><br />
+        <span class="grad-violet" data-i18n="hero.t2">Сайты.</span><br />
+        <span class="grad-fuchsia" data-i18n="hero.t3">Приложения.</span>
+      </h1>
+      <p class="hero__sub" data-i18n="hero.sub">Создаю проекты под ключ — от идеи до запуска. Логотип, фирменный стиль, дизайн и реальная разработка с использованием AI. Один человек закрывает весь цикл.</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary" data-i18n="hero.cta1">Обсудить проект</a>
+        <a href="#work" class="btn btn--ghost" data-i18n="hero.cta2">Смотреть работы</a>
+      </div>
+      <div class="hero__stats">
+        <div><b data-i18n="hero.stat1.b">30+</b><span data-i18n="hero.stat1.s">сайтов</span></div>
+        <div><b data-i18n="hero.stat2.b">4+</b><span data-i18n="hero.stat2.s">крупных проекта</span></div>
+        <div><b data-i18n="hero.stat3.b">8</b><span data-i18n="hero.stat3.s">лет в дизайне</span></div>
+        <div><b data-i18n="hero.stat4.b">360°</b><span data-i18n="hero.stat4.s">бренд · дизайн · код</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="section" id="services">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="services.title">Услуги</h2>
+      <p class="section__lead" data-i18n="services.lead">Полный цикл или отдельный этап — как удобно вам.</p>
+    </div>
+
+    <div class="services">
+      <article class="card">
+        <div class="card__icon">✦</div>
+        <h3 data-i18n="srv.brand-site.h">Бренд + сайт под ключ</h3>
+        <p data-i18n="srv.brand-site.p">Логотип, фирменный стиль и сайт единым комплектом. Целостный образ и готовый, работающий сайт.</p>
+        <button class="card__more" data-modal="brand-site" data-i18n="srv.more">Подробнее →</button>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">▦</div>
+        <h3 data-i18n="srv.websites.h">Сайты под ключ</h3>
+        <p data-i18n="srv.websites.p">Лендинги и многостраничные сайты: дизайн, тексты, реальная вёрстка и запуск. Адаптив и скорость.</p>
+        <button class="card__more" data-modal="websites" data-i18n="srv.more">Подробнее →</button>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">◈</div>
+        <h3 data-i18n="srv.apps.h">Разработка приложений</h3>
+        <p data-i18n="srv.apps.p">Веб-приложения и платформы: от прототипа до рабочего продукта с базой данных.</p>
+        <button class="card__more" data-modal="apps" data-i18n="srv.more">Подробнее →</button>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">⚙</div>
+        <h3 data-i18n="srv.ai.h">Автоматизация и AI</h3>
+        <p data-i18n="srv.ai.p">Боты, интеграции, ИИ-помощники, рассылки. Снимаю с вас рутину с помощью искусственного интеллекта.</p>
+        <button class="card__more" data-modal="ai" data-i18n="srv.more">Подробнее →</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ПОРТФОЛИО -->
+  <section class="section" id="work">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="work.title">Портфолио</h2>
+      <p class="section__lead" data-i18n="work.lead">Цельные бренды от логотипа до запущенного продукта — каждый в своём стиле.</p>
+    </div>
+
+    <div class="cases">
+
+      <!-- LIVEBOOK -->
+      <article class="case" style="--accent:#A02E54; --accent2:#5c1929">
+        <a href="https://livebook.ch" target="_blank" rel="noopener" class="case__visual case__visual--shot" style="--shot:url('assets/cover-livebook.png')" aria-label="Arvut LiveBook website"></a>
+        <div class="case__body">
+          <span class="case__tag" data-i18n="case.lb.tag">Платформа · цифровые визитки · платные коммуникации</span>
+          <h3 data-i18n="case.lb.h">Arvut LiveBook</h3>
+          <p data-i18n="case.lb.p">Бренд и продукт для платформы цифровых визиток и платных коммуникаций: логотип, лендинг и сама платформа.</p>
+          <ul class="case__roles" data-i18n-roles="case.lb.r">
+            <li>Бренд и логотип</li><li>Лендинг</li><li>UX / UI Design</li><li>Разработка</li><li>Запуск</li>
+          </ul>
+          <a href="https://livebook.ch" target="_blank" rel="noopener" class="case__btn" data-i18n="case.view">Посмотреть</a>
+        </div>
+      </article>
+
+      <!-- VSEBANK -->
+      <article class="case" style="--accent:#E0B341; --accent2:#b5862a">
+        <a href="https://vsebank.space" target="_blank" rel="noopener" class="case__visual case__visual--shot" style="--shot:url('assets/cover-vsebank.png')" aria-label="Сайт Вселенского банка изобилия"></a>
+        <div class="case__body">
+          <span class="case__tag" data-i18n="case.vb.tag">Приложение · симулятор</span>
+          <h3 data-i18n="case.vb.h">Вселенский банк изобилия</h3>
+          <p data-i18n="case.vb.p">Дизайн и разработка приложения-симулятора: бренд, интерфейс и рабочее веб-приложение от и до.</p>
+          <ul class="case__roles" data-i18n-roles="case.vb.r">
+            <li>Брендинг</li><li>UI Design</li><li>UX Design</li><li>Разработка</li><li>Запуск</li>
+          </ul>
+          <a href="https://vsebank.space" target="_blank" rel="noopener" class="case__btn" data-i18n="case.view">Посмотреть</a>
+        </div>
+      </article>
+
+      <!-- SELINUS -->
+      <article class="case" style="--accent:#AF8338; --accent2:#7a5a22">
+        <a href="https://selinusfincon.ch" target="_blank" rel="noopener" class="case__visual case__visual--shot" style="--shot:url('assets/cover-selinus.png')" aria-label="Сайт Selinùs Financial Consulting"></a>
+        <div class="case__body">
+          <span class="case__tag" data-i18n="case.sl.tag">Юридический и финансовый консалтинг</span>
+          <h3 data-i18n="case.sl.h">Selinùs Financial Consulting</h3>
+          <p data-i18n="case.sl.p">Премиальный бренд для швейцарской финансовой компании: логотип, фирменный стиль, брендбук и многостраничный сайт.</p>
+          <ul class="case__roles" data-i18n-roles="case.sl.r">
+            <li>Логотип и бренд</li><li>Дизайн сайта</li><li>Вёрстка</li><li>Рекламное видео</li><li class="role--icon" data-i18n-title="role.globe.title" title="Многоязычный сайт"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></li>
+          </ul>
+          <a href="https://selinusfincon.ch" target="_blank" rel="noopener" class="case__btn" data-i18n="case.view">Посмотреть</a>
+        </div>
+      </article>
+
+      <!-- ARVUT ACCOUNTING -->
+      <article class="case" style="--accent:#17A2A8; --accent2:#0e7479">
+        <a href="https://arvut.ch" target="_blank" rel="noopener" class="case__visual case__visual--shot" style="--shot:url('assets/cover-arvut.png')" aria-label="Сайт Arvut Accounting"></a>
+        <div class="case__body">
+          <span class="case__tag"><span data-i18n="case.ar.tag.a">Бухгалтерия</span><span style="color:var(--accent)"> · </span><span data-i18n="case.ar.tag.b">сервис</span></span>
+          <h3 data-i18n="case.ar.h">Arvut Accounting</h3>
+          <p data-i18n="case.ar.p">Фирменный стиль и корпоративный сайт бухгалтерской компании: логотип, графика и многостраничный сайт.</p>
+          <ul class="case__roles" data-i18n-roles="case.ar.r">
+            <li>Логотип и бренд</li><li>Дизайн сайта</li><li>Тексты</li><li>Сборка</li><li>Видео</li><li class="role--icon" data-i18n-title="role.globe.title" title="Многоязычный сайт"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></li>
+          </ul>
+          <a href="https://arvut.ch" target="_blank" rel="noopener" class="case__btn" data-i18n="case.view">Посмотреть</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ЦЕНЫ -->
+  <section class="section" id="pricing">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="pricing.title">Цены</h2>
+      <p class="section__lead price-lead" data-i18n="pricing.lead">Стартовые цены — минимальные. Финальная стоимость зависит от объёма и обсуждается под задачу. Цена «от» — если у вас уже есть материалы (тексты, бриф, идея, наброски). Если делаю всё с нуля — стоимость собирается из надстроек ниже. Точную цену рассчитаю после короткого брифа.</p>
+    </div>
+
+    <div class="price-list">
+
+      <div class="price-row" id="price-brand-site">
+        <div class="price-row__info">
+          <h3 data-i18n="p.brand-site.h">Brand + website, turnkey</h3>
+          <p data-i18n="p.brand-site.p">Logo, identity and website as one package.</p>
+          <details class="price-extras">
+            <summary data-i18n="price.extras.summary">How the price is built</summary>
+            <ul class="price-extras__list">
+              <li><span data-i18n="p.brand-site.base">Base: ...</span><b>CHF 3 500</b></li>
+              <li><span data-i18n="p.brand-site.x1">+ Copywriting</span><b>+CHF 300</b></li>
+              <li><span data-i18n="p.brand-site.x2">+ Multi-page site instead of a landing</span><b>+CHF 1 500</b></li>
+              <li><span data-i18n="p.brand-site.x3">+ Additional language version</span><b>+CHF 300</b></li>
+              <li><span data-i18n="p.brand-site.x4">+ Promo video (or AI avatar video)</span><b>+CHF 500</b></li>
+              <li class="price-extras__seo"><span data-i18n="p.seo.promo">+ SEO promotion (monthly retainer)</span><b data-i18n="p.seo.promo.price">from CHF 2 500/mo</b></li>
+            </ul>
+            <p class="price-extras__total"><span data-i18n="price.total.label.brand-site">From scratch (you bring only the idea):</span> <b>CHF 5 000 — 10 000</b></p>
+          </details>
+        </div>
+        <div class="price-row__value">from CHF 3 500</div>
+      </div>
+
+      <div class="price-row" id="price-websites">
+        <div class="price-row__info">
+          <h3 data-i18n="p.landing.h">Landing page, turnkey</h3>
+          <p data-i18n="p.landing.p">A single-page site with real design and coded layout.</p>
+          <details class="price-extras">
+            <summary data-i18n="price.extras.summary">How the price is built</summary>
+            <ul class="price-extras__list">
+              <li><span data-i18n="p.landing.base">Base: ...</span><b>CHF 1 800</b></li>
+              <li><span data-i18n="p.landing.x1">+ Copywriting</span><b>+CHF 300</b></li>
+              <li><span data-i18n="p.landing.x2">+ Extra sections</span><b>+CHF 300</b></li>
+              <li><span data-i18n="p.landing.x3">+ Animations and effects</span><b>+CHF 300</b></li>
+              <li><span data-i18n="p.landing.x4">+ CRM, payments, messengers</span><b>+CHF 500</b></li>
+              <li><span data-i18n="p.landing.x5">+ Promo video (or AI avatar video)</span><b>+CHF 500</b></li>
+              <li class="price-extras__seo"><span data-i18n="p.seo.promo">+ SEO promotion (monthly retainer)</span><b data-i18n="p.seo.promo.price">from CHF 2 500/mo</b></li>
+            </ul>
+            <p class="price-extras__total"><span data-i18n="price.total.label.landing">Turnkey from scratch (you bring only the idea):</span> <b>CHF 2 500 — 4 000</b></p>
+          </details>
+        </div>
+        <div class="price-row__value">from CHF 1 800</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-row__info">
+          <h3 data-i18n="p.multi.h">Multi-page website</h3>
+          <p data-i18n="p.multi.p">Corporate site with sections, a catalog or a blog.</p>
+          <details class="price-extras">
+            <summary data-i18n="price.extras.summary">How the price is built</summary>
+            <ul class="price-extras__list">
+              <li><span data-i18n="p.multi.base">Base: ...</span><b>CHF 5 000</b></li>
+              <li><span data-i18n="p.multi.x1">+ Copywriting from scratch</span><b>+CHF 1 000</b></li>
+              <li><span data-i18n="p.multi.x2">+ Product catalog (up to 50 items)</span><b>+CHF 1 500</b></li>
+              <li><span data-i18n="p.multi.x3">+ Blog with admin panel</span><b>+CHF 800</b></li>
+              <li><span data-i18n="p.multi.x4">+ Additional language version</span><b>+CHF 800</b></li>
+              <li><span data-i18n="p.multi.x5">+ CRM, payments, messengers</span><b>+CHF 500</b></li>
+              <li><span data-i18n="p.multi.x6">+ Promo video (or AI avatar video)</span><b>+CHF 500</b></li>
+              <li class="price-extras__seo"><span data-i18n="p.seo.promo">+ SEO promotion (monthly retainer)</span><b data-i18n="p.seo.promo.price">from CHF 2 500/mo</b></li>
+              <li class="price-extras__seo"><span data-i18n="p.seo.audit">+ SEO audit (one-off)</span><b data-i18n="p.seo.audit.price">from CHF 1 500</b></li>
+            </ul>
+            <p class="price-extras__total"><span data-i18n="price.total.label.multipage">Turnkey from scratch (you bring only the idea):</span> <b>CHF 7 000 — 15 000</b></p>
+          </details>
+        </div>
+        <div class="price-row__value">from CHF 5 000</div>
+      </div>
+
+      <div class="price-row" id="price-apps">
+        <div class="price-row__info">
+          <h3 data-i18n="p.apps.h">App development</h3>
+          <p data-i18n="p.apps.p">Web apps and platforms — from prototype to a live product.</p>
+          <details class="price-extras">
+            <summary data-i18n="price.extras.summary">How the price is built</summary>
+            <ul class="price-extras__list">
+              <li><span data-i18n="p.apps.proto">Prototype / MVP</span><b>from CHF 8 000</b></li>
+              <li><span data-i18n="p.apps.full">Full application</span><b>from CHF 25 000</b></li>
+              <li><span data-i18n="p.apps.turnkey">Application, turnkey</span><b>from CHF 40 000</b></li>
+              <li><span data-i18n="p.apps.mob1">Mobile version — for my application</span><b>CHF 3 000</b></li>
+              <li><span data-i18n="p.apps.mob2">Mobile version — for your existing app</span><b>CHF 5 000</b></li>
+              <li><span data-i18n="p.apps.x1">+ Payment integration</span><b>from +CHF 500 to +CHF 2 500</b></li>
+              <li><span data-i18n="p.apps.x2">+ Admin panel</span><b>from +CHF 800 to +CHF 3 000</b></li>
+            </ul>
+            <p class="price-extras__total"><span data-i18n="price.total.label.apps">Full application, turnkey:</span> <b>CHF 25 000 — 70 000</b></p>
+          </details>
+        </div>
+        <div class="price-row__value">from CHF 8 000</div>
+      </div>
+
+      <div class="price-row" id="price-ai">
+        <div class="price-row__info">
+          <h3 data-i18n="p.ai.h">Automation &amp; AI</h3>
+          <p data-i18n="p.ai.p">Bots, AI assistants, mailings, integrations and avatar videos.</p>
+          <details class="price-extras">
+            <summary data-i18n="price.extras.summary">How the price is built</summary>
+            <ul class="price-extras__list">
+              <li><span data-i18n="p.ai.base">Simple chatbot for messengers</span><b>CHF 2 500</b></li>
+              <li><span data-i18n="p.ai.x1">+ AI assistant</span><b>+CHF 2 500</b></li>
+              <li><span data-i18n="p.ai.x2">+ Multi-step scenarios with branching</span><b>+CHF 1 500</b></li>
+              <li><span data-i18n="p.ai.x3">+ Small app for a routine task</span><b>+CHF 3 000</b></li>
+              <li><span data-i18n="p.ai.x4">+ Voice AI agent</span><b>+CHF 1 500</b></li>
+              <li><span data-i18n="p.ai.x5">+ Promo video (or AI avatar video)</span><b>+CHF 500</b></li>
+            </ul>
+            <p class="price-extras__total"><span data-i18n="price.total.label.ai">Complex solution, turnkey:</span> <b>CHF 5 000 — 25 000</b></p>
+          </details>
+        </div>
+        <div class="price-row__value">from CHF 2 500</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ОБО МНЕ -->
+  <section class="section about" id="about">
+    <h2 class="section__title about__title" data-i18n="about.title">Обо мне</h2>
+    <div class="about__photo about__photo--avatar">
+      <img src="assets/photo-nataly.jpg" alt="Натали" onerror="this.style.display='none';this.parentNode.classList.add('about__photo--empty')" />
+    </div>
+    <div class="about__text">
+      <p data-i18n="about.p1">Меня зовут Натали. Я нейродизайнер и разработчик: соединяю графический дизайн с многолетним опытом и современные AI-инструменты. Не просто рисую красивую картинку — довожу проект до рабочего сайта или приложения.</p>
+      <p data-i18n="about.p2">Активно использую искусственный интеллект в работе: он ускоряет процесс и усиливает результат. А опыт в маркетинге и психологии помогает делать продукт, который продаёт.</p>
+      <ul class="about__list">
+        <li data-i18n="about.l1">Полный цикл: бренд → дизайн → разработка → запуск</li>
+        <li data-i18n="about.l2">AI-инструменты на каждом этапе работы</li>
+        <li data-i18n="about.l3">Обучение в онлайн-университете ZeroCoder</li>
+      </ul>
+      <div class="about__certs" id="certs">
+        <button class="cert cert--thumb" data-cert="assets/cert-3.png" data-index="0" title="Vibe Marketing"><img src="assets/cert-3.png" alt="" /></button>
+        <button class="cert cert--thumb" data-cert="assets/cert-2.png" data-index="1" title="Perplexity"><img src="assets/cert-2.png" alt="" /></button>
+        <button class="cert cert--thumb" data-cert="assets/cert-1.png" data-index="2" title="Neural Networks"><img src="assets/cert-1.png" alt="" /></button>
+      </div>
+      <div class="about__actions">
+        <a href="#contact" class="btn btn--primary" data-i18n="about.cta1">Обсудить проект</a>
+        <button class="btn btn--ghost" id="reviewsBtn" data-i18n="about.cta2">Отзывы</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЧАСТЫЕ ВОПРОСЫ -->
+  <section class="section" id="faq">
+    <div class="section__head">
+      <h2 class="section__title" data-i18n="faq.title">Частые вопросы</h2>
+      <p class="section__lead price-lead" data-i18n="faq.lead">Самое частое, что спрашивают перед началом работы — если вашего вопроса нет, напишите.</p>
+
+    </div>
+    <div class="faq">
+      <details class="faq__item"><summary data-i18n="faq.q1">Что входит в проект «под ключ»?</summary><div class="faq__body" data-i18n-html="faq.a1"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q2">Сколько времени занимает разработка?</summary><div class="faq__body" data-i18n-html="faq.a2"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q3">Как мы работаем с AI?</summary><div class="faq__body" data-i18n-html="faq.a3"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q4">Можно ли заказать только дизайн без разработки?</summary><div class="faq__body" data-i18n-html="faq.a4"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q5">Сколько правок входит в работу?</summary><div class="faq__body" data-i18n-html="faq.a5"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q6">Как и когда оплата?</summary><div class="faq__body" data-i18n-html="faq.a6"></div></details>
+      <details class="faq__item"><summary data-i18n="faq.q7">А если мне не понравится результат?</summary><div class="faq__body" data-i18n-html="faq.a7"></div></details>
+    </div>
+  </section>
+
+  <!-- КОНТАКТ -->
+  <section class="section contact" id="contact">
+    <div class="contact__card">
+      <h2 data-i18n="contact.title">Давайте сделаем ваш проект</h2>
+      <p data-i18n-html="contact.lead">Пришлите описание задачи и все материалы, которые у вас есть, на почту <a href="mailto:nk@arvut.ch" class="contact__inline-email">nk@arvut.ch</a> — или напишите мне в любой мессенджер. Договоримся о созвоне, на котором вы поделитесь идеей, а я расскажу, как могу её реализовать, со сроками и стоимостью.</p>
+      <div class="contact__actions">
+        <a href="mailto:nk@arvut.ch" class="btn btn--primary" data-i18n="contact.cta1">Написать на почту</a>
+        <a href="https://kwork.ru/user/nataly_freelance" target="_blank" rel="noopener" class="btn btn--ghost" data-i18n="contact.cta2">Профиль на Kwork</a>
+      </div>
+      <div class="contact__more">
+        <a href="tel:+41779076542" class="contact__phone">+41 77 907 65 42</a>
+        <span class="contact__channels" data-i18n="contact.channels">Телефон / WhatsApp / Telegram / GoChat / Viber / Imo / LiveBook / FaceTime</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- МОДАЛКА УВЕЛИЧЕНИЯ СЕРТИФИКАТА -->
+  <div class="cert-modal" id="certModal">
+    <button class="cert-modal__close" id="certModalClose" aria-label="Закрыть" data-i18n-aria="a11y.close">×</button>
+    <button class="cert-modal__nav cert-modal__nav--prev" id="certPrev" aria-label="Previous" data-i18n-aria="a11y.prev">‹</button>
+    <button class="cert-modal__nav cert-modal__nav--next" id="certNext" aria-label="Next" data-i18n-aria="a11y.next">›</button>
+    <img id="certModalImg" src="" alt="Сертификат" />
+  </div>
+  <script>
+    (function(){
+      const modal = document.getElementById('certModal');
+      const imgEl = document.getElementById('certModalImg');
+      const close = document.getElementById('certModalClose');
+      const prev = document.getElementById('certPrev');
+      const next = document.getElementById('certNext');
+      const thumbs = [...document.querySelectorAll('.cert--thumb')];
+      const getSources = () => thumbs.map(t => t.dataset.cert);
+      let i = 0;
+      const show = (idx) => { const s = getSources(); i = (idx + s.length) % s.length; imgEl.src = s[i]; };
+      thumbs.forEach((btn, idx) => btn.addEventListener('click', () => { show(idx); modal.classList.add('open'); }));
+      prev.addEventListener('click', e => { e.stopPropagation(); show(i - 1); });
+      next.addEventListener('click', e => { e.stopPropagation(); show(i + 1); });
+      const hide = () => modal.classList.remove('open');
+      modal.addEventListener('click', e => { if (e.target === modal || e.target === close) hide(); });
+      document.addEventListener('keydown', e => {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') hide();
+        if (e.key === 'ArrowLeft') show(i - 1);
+        if (e.key === 'ArrowRight') show(i + 1);
+      });
+    })();
+  </script>
+
+  <!-- МОДАЛКА ОТЗЫВОВ -->
+  <div class="modal" id="reviewsModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box modal__box--wide" role="dialog" aria-modal="true">
+      <button class="modal__close" data-close aria-label="Закрыть" data-i18n-aria="a11y.close">×</button>
+      <h3 data-i18n="rv.title">Отзывы клиентов</h3>
+
+      <div class="reviews" id="reviewsList">
+        <!-- отзывы добавляются скриптом -->
+      </div>
+
+      <h4 class="reviews__form-title" data-i18n="rv.form.h">Поделитесь впечатлениями о работе с Натали</h4>
+      <form class="review-form" id="reviewForm">
+        <input class="review-form__input" name="name" placeholder="Ваше имя" data-i18n-ph="rv.form.name" required maxlength="60" />
+        <input class="review-form__input" name="role" placeholder="Чем вы занимаетесь (необязательно)" data-i18n-ph="rv.form.role" maxlength="80" />
+        <textarea class="review-form__textarea" name="text" placeholder="Расскажите, что вам понравилось и что можно улучшить" data-i18n-ph="rv.form.text" required maxlength="600" rows="4"></textarea>
+        <div class="review-form__row">
+          <div class="review-form__stars" id="reviewStars" data-rating="5">
+            <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+          </div>
+          <button type="submit" class="btn btn--primary" data-i18n="rv.form.submit">Опубликовать</button>
+        </div>
+        <p class="review-form__note" data-i18n="rv.form.note">Я буду благодарна за ваш отзыв — он помогает мне становиться лучше и важен для тех, кто ещё думает обратиться.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- МОДАЛКА УСЛУГ -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box modal__box--wide" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" data-close aria-label="Закрыть" data-i18n-aria="a11y.close">×</button>
+      <h3 id="modalTitle">Подробнее об услуге</h3>
+      <div id="modalContent" class="modal__content"></div>
+      <div class="modal__actions">
+        <a href="#contact" class="btn btn--primary" data-close data-i18n="sm.cta">Обсудить проект</a>
+        <a href="#pricing" class="modal__calc" id="modalCalc" data-close data-i18n="sm.calc">Рассчитать стоимость →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <img src="assets/logo-nataly.png" alt="Натали" class="footer__logo" />
+    <p>© <span id="year"></span> <span data-i18n="footer.name">Наталья Ковпинец</span> · <span data-i18n="footer.role">Дизайн и разработка под ключ</span></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="i18n.js?v=21"></script>
+  <script src="script.js?v=21"></script>
+</body>
+</html>
