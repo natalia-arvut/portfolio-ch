@@ -208,7 +208,7 @@ const T = {
     'nav.pricing': 'Preise',
     'nav.about': 'Über mich',
     'nav.faq': 'FAQ',
-    'nav.cta': 'Projekt besprechen',
+    'nav.cta': 'Anfragen',
 
     'hero.eyebrow': 'Grafik- & Webdesignerin · Entwicklerin · KI',
     'hero.t1': 'Marken.',
@@ -401,7 +401,7 @@ const T = {
     'nav.pricing': 'Tarifs',
     'nav.about': 'À propos',
     'nav.faq': 'FAQ',
-    'nav.cta': 'Discuter d’un projet',
+    'nav.cta': 'Contact',
 
     'hero.eyebrow': 'Designer graphique & web · développeuse · IA',
     'hero.t1': 'Marques.',
@@ -594,7 +594,7 @@ const T = {
     'nav.pricing': 'Prezzi',
     'nav.about': 'Chi sono',
     'nav.faq': 'FAQ',
-    'nav.cta': 'Parliamo del progetto',
+    'nav.cta': 'Contatti',
 
     'hero.eyebrow': 'Designer grafica & web · sviluppatrice · IA',
     'hero.t1': 'Brand.',
