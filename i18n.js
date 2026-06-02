@@ -79,7 +79,7 @@ const T = {
 
     'p.brand-site.h': 'Brand + website, turnkey',
     'p.brand-site.p': 'Logo, brand identity and website as one package.',
-    'p.brand-site.base': 'Base: brief, copy and materials from you. Logo + identity + brand guidelines + single-page website',
+    'p.brand-site.base': 'Base: brief, copy and materials from you. Logo + identity + brand guidelines + single-page website. Basic on-page SEO included.',
     'p.brand-site.x1': '+ Copywriting',
     'p.brand-site.x2': '+ Multi-page site instead of a landing',
     'p.brand-site.x3': '+ Additional language version',
@@ -92,7 +92,7 @@ const T = {
 
     'p.landing.h': 'Landing page, turnkey',
     'p.landing.p': 'A single-page site with real design and coded layout.',
-    'p.landing.base': 'Base: copy, materials and design preferences from you',
+    'p.landing.base': 'Base: copy, materials and design preferences from you. Basic on-page SEO included.',
     'p.landing.x1': '+ Copywriting',
     'p.landing.x2': '+ Extra sections (beyond 7 blocks)',
     'p.landing.x3': '+ Animations and effects',
@@ -102,7 +102,7 @@ const T = {
 
     'p.multi.h': 'Multi-page website',
     'p.multi.p': 'Corporate site with sections, a catalog or a blog.',
-    'p.multi.base': 'Base: structure, copy and materials from you (up to 5 pages)',
+    'p.multi.base': 'Base: structure, copy and materials from you (up to 5 pages). Basic on-page SEO included.',
     'p.multi.x1': '+ Copywriting from scratch',
     'p.multi.x2': '+ Product catalog (up to 50 items)',
     'p.multi.x3': '+ Blog with admin panel',
@@ -272,7 +272,7 @@ const T = {
 
     'p.brand-site.h': 'Marke + Website, schlüsselfertig',
     'p.brand-site.p': 'Logo, Markenidentität und Website als ein Paket.',
-    'p.brand-site.base': 'Basis: Briefing, Texte und Materialien von Ihnen. Logo + Identität + Markenrichtlinien + einseitige Website',
+    'p.brand-site.base': 'Basis: Briefing, Texte und Materialien von Ihnen. Logo + Identität + Markenrichtlinien + einseitige Website. Grundlegende On-Page-SEO inklusive.',
     'p.brand-site.x1': '+ Texterstellung',
     'p.brand-site.x2': '+ Mehrseitenwebsite statt Landingpage',
     'p.brand-site.x3': '+ Zusätzliche Sprachversion',
@@ -285,7 +285,7 @@ const T = {
 
     'p.landing.h': 'Landingpage, schlüsselfertig',
     'p.landing.p': 'Eine einseitige Website mit echtem Design und programmierter Umsetzung.',
-    'p.landing.base': 'Basis: Texte, Materialien und Designwünsche von Ihnen',
+    'p.landing.base': 'Basis: Texte, Materialien und Designwünsche von Ihnen. Grundlegende On-Page-SEO inklusive.',
     'p.landing.x1': '+ Texterstellung',
     'p.landing.x2': '+ Zusätzliche Sektionen (über 7 Blöcke hinaus)',
     'p.landing.x3': '+ Animationen und Effekte',
@@ -295,7 +295,7 @@ const T = {
 
     'p.multi.h': 'Mehrseitenwebsite',
     'p.multi.p': 'Firmenwebsite mit Sektionen, Katalog oder Blog.',
-    'p.multi.base': 'Basis: Struktur, Texte und Materialien von Ihnen (bis 5 Seiten)',
+    'p.multi.base': 'Basis: Struktur, Texte und Materialien von Ihnen (bis 5 Seiten). Grundlegende On-Page-SEO inklusive.',
     'p.multi.x1': '+ Texterstellung von Grund auf',
     'p.multi.x2': '+ Produktkatalog (bis 50 Artikel)',
     'p.multi.x3': '+ Blog mit Admin-Panel',
@@ -465,7 +465,7 @@ const T = {
 
     'p.brand-site.h': 'Marque + site web, clé en main',
     'p.brand-site.p': 'Logo, identité de marque et site web en un seul paquet.',
-    'p.brand-site.base': 'Base : brief, textes et matériaux de votre côté. Logo + identité + charte de marque + site une page',
+    'p.brand-site.base': 'Base : brief, textes et matériaux de votre côté. Logo + identité + charte de marque + site une page. SEO on-page de base inclus.',
     'p.brand-site.x1': '+ Rédaction',
     'p.brand-site.x2': '+ Site multi-pages au lieu d’une landing',
     'p.brand-site.x3': '+ Version dans une langue supplémentaire',
@@ -478,7 +478,7 @@ const T = {
 
     'p.landing.h': 'Landing page, clé en main',
     'p.landing.p': 'Un site une page avec design soigné et intégration réelle.',
-    'p.landing.base': 'Base : textes, matériaux et préférences de design de votre côté',
+    'p.landing.base': 'Base : textes, matériaux et préférences de design de votre côté. SEO on-page de base inclus.',
     'p.landing.x1': '+ Rédaction',
     'p.landing.x2': '+ Sections supplémentaires (au-delà de 7 blocs)',
     'p.landing.x3': '+ Animations et effets',
@@ -488,7 +488,7 @@ const T = {
 
     'p.multi.h': 'Site multi-pages',
     'p.multi.p': 'Site corporate avec sections, catalogue ou blog.',
-    'p.multi.base': 'Base : structure, textes et matériaux de votre côté (jusqu’à 5 pages)',
+    'p.multi.base': 'Base : structure, textes et matériaux de votre côté (jusqu’à 5 pages). SEO on-page de base inclus.',
     'p.multi.x1': '+ Rédaction de zéro',
     'p.multi.x2': '+ Catalogue produits (jusqu’à 50 articles)',
     'p.multi.x3': '+ Blog avec panneau d’administration',
@@ -658,7 +658,7 @@ const T = {
 
     'p.brand-site.h': 'Brand + sito web, chiavi in mano',
     'p.brand-site.p': 'Logo, identità di brand e sito web in un unico pacchetto.',
-    'p.brand-site.base': 'Base: brief, testi e materiali da parte Sua. Logo + identità + brand guidelines + sito di una pagina',
+    'p.brand-site.base': 'Base: brief, testi e materiali da parte Sua. Logo + identità + brand guidelines + sito di una pagina. SEO on-page di base inclusa.',
     'p.brand-site.x1': '+ Copywriting',
     'p.brand-site.x2': '+ Sito multipagina al posto della landing',
     'p.brand-site.x3': '+ Versione in una lingua aggiuntiva',
@@ -671,7 +671,7 @@ const T = {
 
     'p.landing.h': 'Landing page, chiavi in mano',
     'p.landing.p': 'Un sito di una pagina con design curato e sviluppo reale.',
-    'p.landing.base': 'Base: testi, materiali e preferenze di design da parte Sua',
+    'p.landing.base': 'Base: testi, materiali e preferenze di design da parte Sua. SEO on-page di base inclusa.',
     'p.landing.x1': '+ Copywriting',
     'p.landing.x2': '+ Sezioni aggiuntive (oltre 7 blocchi)',
     'p.landing.x3': '+ Animazioni ed effetti',
@@ -681,7 +681,7 @@ const T = {
 
     'p.multi.h': 'Sito multipagina',
     'p.multi.p': 'Sito aziendale con sezioni, catalogo o blog.',
-    'p.multi.base': 'Base: struttura, testi e materiali da parte Sua (fino a 5 pagine)',
+    'p.multi.base': 'Base: struttura, testi e materiali da parte Sua (fino a 5 pagine). SEO on-page di base inclusa.',
     'p.multi.x1': '+ Copywriting da zero',
     'p.multi.x2': '+ Catalogo prodotti (fino a 50 articoli)',
     'p.multi.x3': '+ Blog con pannello di amministrazione',
