@@ -264,6 +264,25 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; color: var(--text);
 }
 
+/* ============ СОЦИАЛЬНЫЕ ССЫЛКИ (About me) ============ */
+.about__socials {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px;
+}
+.social-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: rgba(255,255,255,.03);
+  color: var(--text); text-decoration: none;
+  font-family: 'Geist', sans-serif; font-weight: 500; font-size: 14px;
+  transition: border-color .2s, transform .2s, background .2s;
+}
+.social-link:hover {
+  border-color: #00e0f8;
+  background: rgba(0, 224, 248,.08);
+  transform: translateY(-2px);
+}
+.social-link svg { opacity: .9; }
+
 /* ============ ПОРТФОЛИО ============ */
 .cases { display: grid; gap: 28px; }
 .case {
