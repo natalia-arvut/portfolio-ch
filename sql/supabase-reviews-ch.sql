@@ -1,8 +1,3 @@
--- Supabase: создание отдельной таблицы для отзывов швейцарского портфолио.
--- Запустить один раз в Supabase SQL Editor проекта vrszciahlkxfzypmyasz.
--- После запуска проверить в Table Editor, что таблица reviews_ch появилась
--- и что RLS включён, а две политики на месте.
-
 create table if not exists reviews_ch (
   id          uuid primary key default gen_random_uuid(),
   name        text not null,
@@ -15,13 +10,11 @@ create table if not exists reviews_ch (
 
 alter table reviews_ch enable row level security;
 
--- Все могут читать (публичная стена отзывов)
 create policy "reviews_ch read"
   on reviews_ch
   for select
   using (true);
 
--- Все могут добавлять отзыв (анонимная форма на сайте)
 create policy "reviews_ch insert"
   on reviews_ch
   for insert

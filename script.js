@@ -193,7 +193,8 @@ const reviewForm = document.getElementById('reviewForm');
 const reviewStars = document.getElementById('reviewStars');
 const reviewsBtn = document.getElementById('reviewsBtn');
 
-// Supabase — separate Swiss table `reviews_ch` (see sql/supabase-reviews-ch.sql)
+// Supabase — same project as RU portfolio (Nataly-portfolio),
+// separate table `reviews_ch` (see sql/supabase-reviews-ch.sql).
 const SUPABASE_URL = 'https://vrszciahlkxfzypmyasz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyc3pjaWFobGt4Znp5cG15YXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyMjY1OTEsImV4cCI6MjA5NTgwMjU5MX0.VoFRxWYnUvCKe1n5_HzqvPjZ9HMx17ZnZS5zFlnlETQ';
 const REVIEWS_TABLE = 'reviews_ch';
