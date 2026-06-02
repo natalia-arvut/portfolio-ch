@@ -648,8 +648,8 @@ a { color: inherit; text-decoration: none; }
 .nav__cta--mobile { display: none; }
 .nav__lang-mobile { display: none; }
 
-/* ============ КОМПАКТНЫЙ ДЕСКТОП (769–1180) — шапка/hero сжимаются, но остаются 2-колоночными ============ */
-@media (min-width: 769px) and (max-width: 1180px) {
+/* ============ КОМПАКТНЫЙ ДЕСКТОП (769–1280) — шапка/hero сжимаются, но остаются 2-колоночными ============ */
+@media (min-width: 769px) and (max-width: 1280px) {
   /* Шапка */
   .nav__inner { gap: 14px; }
   .nav__right { gap: 10px; }
@@ -667,6 +667,11 @@ a { color: inherit; text-decoration: none; }
   .hero__stats { gap: 24px; }
   .hero__stats b { font-size: 24px; }
   .hero__text { margin-top: 88px; }
+}
+
+/* На узких десктопах (769–1023) скрываем CTA из шапки — он есть в hero, не дублируем */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .nav__cta--desktop { display: none !important; }
 }
 
 /* ============ МОБИЛЬНАЯ ВЕРСИЯ (≤768) ============ */
