@@ -591,21 +591,49 @@ function updateStars(rating) {
 reviewStars.addEventListener('click', e => { if (e.target.dataset.v) updateStars(+e.target.dataset.v); });
 updateStars(5);
 
+function showFormFeedback(kind) {
+  const T = window.i18nT || { en: {} };
+  const lang = (window.i18nLang && window.i18nLang()) || 'en';
+  const dict = T[lang] || T.en || {};
+  const msg = kind === 'success'
+    ? (dict['rv.form.success'] || 'Thank you — your review has been published.')
+    : (dict['rv.form.error']   || 'Couldn\'t send. Please write to nk@arvut.ch.');
+  let host = document.getElementById('reviewFormFeedback');
+  if (!host) {
+    host = document.createElement('div');
+    host.id = 'reviewFormFeedback';
+    reviewForm.appendChild(host);
+  }
+  host.className = 'review-feedback review-feedback--' + kind;
+  host.innerHTML = `
+    <span class="review-feedback__icon" aria-hidden="true">${kind === 'success' ? '✓' : '!'}</span>
+    <span class="review-feedback__text">${msg}</span>
+  `;
+  host.classList.add('review-feedback--show');
+  if (kind === 'success') {
+    setTimeout(() => { host.classList.remove('review-feedback--show'); }, 6000);
+  }
+}
+
 reviewForm.addEventListener('submit', async e => {
   e.preventDefault();
   const fd = new FormData(reviewForm);
+  const lang = (window.i18nLang && window.i18nLang()) || 'en';
   const review = {
     name: fd.get('name').trim(),
     role: fd.get('role').trim() || null,
     text: fd.get('text').trim(),
     rating: +reviewStars.dataset.rating,
-    language: 'en'
+    language: lang
   };
   if (!review.name || !review.text) return;
   const ok = await pushReview(review);
   if (ok) {
     reviewForm.reset();
     updateStars(5);
+    showFormFeedback('success');
     await renderReviews();
+  } else {
+    showFormFeedback('error');
   }
 });

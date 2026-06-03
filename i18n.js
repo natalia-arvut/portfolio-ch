@@ -175,6 +175,8 @@ const T = {
     'rv.form.text': 'Tell what you liked and what could be improved',
     'rv.form.submit': 'Publish',
     'rv.form.note': 'I\'ll be grateful for your review — it helps me grow and matters to people still deciding whether to reach out.',
+    'rv.form.success': 'Thank you — your review has been published.',
+    'rv.form.error': 'Couldn\'t send right now. Please try again, or write to nk@arvut.ch.',
 
     'a11y.menu': 'Menu',
     'a11y.close': 'Close',
@@ -368,6 +370,8 @@ const T = {
     'rv.form.text': 'Erzählen Sie, was Ihnen gefallen hat und was besser sein könnte',
     'rv.form.submit': 'Veröffentlichen',
     'rv.form.note': 'Ich bin dankbar für Ihre Bewertung — sie hilft mir zu wachsen und ist wichtig für alle, die noch überlegen, ob sie mich kontaktieren sollen.',
+    'rv.form.success': 'Vielen Dank — Ihre Bewertung wurde veröffentlicht.',
+    'rv.form.error': 'Senden hat gerade nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie an nk@arvut.ch.',
 
     'a11y.menu': 'Menü',
     'a11y.close': 'Schliessen',
@@ -754,6 +758,8 @@ const T = {
     'rv.form.text': 'Racconti cosa Le è piaciuto e cosa si potrebbe migliorare',
     'rv.form.submit': 'Pubblica',
     'rv.form.note': 'Le sarò grata per la Sua recensione — mi aiuta a crescere e conta per chi sta ancora pensando se contattarmi.',
+    'rv.form.success': 'Grazie — la Sua recensione è stata pubblicata.',
+    'rv.form.error': 'Invio non riuscito. Riprovi o scriva a nk@arvut.ch.',
 
     'a11y.menu': 'Menu',
     'a11y.close': 'Chiudi',
