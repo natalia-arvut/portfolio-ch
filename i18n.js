@@ -565,6 +565,8 @@ const T = {
     'rv.form.text': 'Dites ce qui vous a plu et ce qui pourrait être amélioré',
     'rv.form.submit': 'Publier',
     'rv.form.note': 'Je serai reconnaissante pour votre avis — il m’aide à progresser et compte pour celles et ceux qui hésitent encore à me contacter.',
+    'rv.form.success': 'Merci — votre avis a été publié.',
+    'rv.form.error': 'Impossible d’envoyer pour le moment. Réessayez ou écrivez à nk@arvut.ch.',
 
     'a11y.menu': 'Menu',
     'a11y.close': 'Fermer',
