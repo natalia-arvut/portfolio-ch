@@ -89,6 +89,8 @@ const T = {
     'p.seo.promo.price': 'from CHF 2 500/mo',
     'p.seo.audit': '+ SEO audit (one-off)',
     'p.seo.audit.price': 'from CHF 1 500',
+    'p.host.label': '+ Domain & hosting setup',
+    'p.host.price': 'individual / on request',
 
     'p.landing.h': 'Landing page, turnkey',
     'p.landing.p': 'A single-page site with real design and coded layout.',
@@ -284,6 +286,8 @@ const T = {
     'p.seo.promo.price': 'ab CHF 2 500/Monat',
     'p.seo.audit': '+ SEO-Audit (einmalig)',
     'p.seo.audit.price': 'ab CHF 1 500',
+    'p.host.label': '+ Einrichtung von Domain und Hosting',
+    'p.host.price': 'individuell / auf Anfrage',
 
     'p.landing.h': 'Landingpage, schlüsselfertig',
     'p.landing.p': 'Eine einseitige Website mit echtem Design und programmierter Umsetzung.',
@@ -479,6 +483,8 @@ const T = {
     'p.seo.promo.price': 'dès CHF 2 500/mois',
     'p.seo.audit': '+ Audit SEO (one-shot)',
     'p.seo.audit.price': 'dès CHF 1 500',
+    'p.host.label': '+ Mise en place du domaine et de l’hébergement',
+    'p.host.price': 'sur demande',
 
     'p.landing.h': 'Landing page, clé en main',
     'p.landing.p': 'Un site une page avec design soigné et intégration réelle.',
@@ -674,6 +680,8 @@ const T = {
     'p.seo.promo.price': 'da CHF 2 500/mese',
     'p.seo.audit': '+ Audit SEO (una tantum)',
     'p.seo.audit.price': 'da CHF 1 500',
+    'p.host.label': '+ Configurazione dominio e hosting',
+    'p.host.price': 'su richiesta',
 
     'p.landing.h': 'Landing page, chiavi in mano',
     'p.landing.p': 'Un sito di una pagina con design curato e sviluppo reale.',
