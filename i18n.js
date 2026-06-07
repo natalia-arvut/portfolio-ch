@@ -91,6 +91,8 @@ const T = {
     'p.seo.audit.price': 'from CHF 1 500',
     'p.host.label': '+ Domain & hosting setup',
     'p.host.price': 'individual / on request',
+    'p.chatbot.label': '+ Website chatbot',
+    'p.chatbot.price': 'from +CHF 2 500',
 
     'p.landing.h': 'Landing page, turnkey',
     'p.landing.p': 'A single-page site with real design and coded layout.',
@@ -288,6 +290,8 @@ const T = {
     'p.seo.audit.price': 'ab CHF 1 500',
     'p.host.label': '+ Einrichtung von Domain und Hosting',
     'p.host.price': 'individuell / auf Anfrage',
+    'p.chatbot.label': '+ Chatbot für die Website',
+    'p.chatbot.price': 'ab +CHF 2 500',
 
     'p.landing.h': 'Landingpage, schlüsselfertig',
     'p.landing.p': 'Eine einseitige Website mit echtem Design und programmierter Umsetzung.',
@@ -485,6 +489,8 @@ const T = {
     'p.seo.audit.price': 'dès CHF 1 500',
     'p.host.label': '+ Mise en place du domaine et de l’hébergement',
     'p.host.price': 'sur demande',
+    'p.chatbot.label': '+ Chatbot pour le site',
+    'p.chatbot.price': 'dès +CHF 2 500',
 
     'p.landing.h': 'Landing page, clé en main',
     'p.landing.p': 'Un site une page avec design soigné et intégration réelle.',
@@ -682,6 +688,8 @@ const T = {
     'p.seo.audit.price': 'da CHF 1 500',
     'p.host.label': '+ Configurazione dominio e hosting',
     'p.host.price': 'su richiesta',
+    'p.chatbot.label': '+ Chatbot per il sito',
+    'p.chatbot.price': 'da +CHF 2 500',
 
     'p.landing.h': 'Landing page, chiavi in mano',
     'p.landing.p': 'Un sito di una pagina con design curato e sviluppo reale.',
