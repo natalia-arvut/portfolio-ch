@@ -588,6 +588,9 @@ a { color: inherit; text-decoration: none; }
 .faq__item summary:hover { color: #00e0f8; }
 .faq__body { padding: 0 28px 22px; }
 .faq__body p { color: var(--muted); font-size: 15.5px; line-height: 1.65; }
+.faq__body ul { color: var(--muted); font-size: 15.5px; line-height: 1.65; list-style-position: inside; margin: 8px 0; }
+.faq__body li { margin-bottom: 4px; }
+.faq__body li:last-child { margin-bottom: 0; }
 
 /* ============ МОДАЛКА ============ */
 .modal[hidden] { display: none; }
