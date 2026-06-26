@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Unbounded:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="main.css?v=54" />
+  <link rel="stylesheet" href="main.css?v=55" />
   <style id="about-fix">
     /* Компактное фото и сертификаты-thumbnails */
     .about { grid-template-columns: auto 1fr !important; gap: 40px !important; align-items: start !important; }
@@ -95,6 +95,21 @@
   <meta http-equiv="Expires" content="0" />
 
   <style id="reveal-anim">
+    /* Кнопка «наверх» */
+    .to-top {
+      position: fixed; right: 24px; bottom: 24px; z-index: 90;
+      width: 46px; height: 46px; border-radius: 50%;
+      display: grid; place-items: center; cursor: pointer;
+      background: rgba(13,18,48,.7); backdrop-filter: blur(8px);
+      border: 1px solid var(--border); color: var(--text);
+      opacity: 0; transform: translateY(12px); pointer-events: none;
+      transition: opacity .3s, transform .3s, border-color .2s, background .2s;
+    }
+    .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+    .to-top:hover { border-color: var(--c-cyan); background: rgba(0,224,248,.16); transform: translateY(-3px); }
+    .to-top svg { width: 20px; height: 20px; }
+    @media (max-width: 600px) { .to-top { right: 16px; bottom: 16px; width: 42px; height: 42px; } }
+
     /* Мягкая подгрузка блоков по всему сайту */
     .js-anim :is(.hero__visual,.hero__eyebrow,.hero__title,.hero__sub,.hero__actions,.hero__stats,.section__head,#services .card,#work .case,.work-more,#pricing .price-row,.about__title,.about__media,.about__text,#faq .faq__item,.contact__card){
       opacity:0; transform:translateY(40px);
@@ -569,14 +584,18 @@
     </div>
   </div>
 
+  <button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
   <footer class="footer">
     <img src="assets/logo-nataly.png" alt="Натали" class="footer__logo" />
     <p>© <span id="year"></span> <span data-i18n="footer.name">Natalia Kovpinetc</span> · <span data-i18n="footer.role">Design &amp; development, turnkey</span> · <span data-i18n="footer.city">Lugano, Switzerland</span></p>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="i18n.js?v=54"></script>
-  <script src="script.js?v=54"></script>
+  <script src="i18n.js?v=55"></script>
+  <script src="script.js?v=55"></script>
   <script>
     // Мягкое появление блоков по всему сайту (как на странице работ)
     (function () {
@@ -604,6 +623,16 @@
           els.forEach(function (e) { io.observe(e); });
         });
       });
+    })();
+
+    // Кнопка «наверх»
+    (function () {
+      var btn = document.getElementById('toTop');
+      if (!btn) return;
+      function onScroll() { btn.classList.toggle('show', window.scrollY > 400); }
+      addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     })();
   </script>
 </body>
