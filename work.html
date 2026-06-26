@@ -22,6 +22,17 @@
     /* На этой странице меню НЕ фиксированное — уезжает при скролле */
     .nav { position: absolute !important; }
 
+    /* Мягкое появление блоков (как в Razgon / Artistic) */
+    .reveal { opacity: 1; transform: none; }
+    .js-anim .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+    }
+    .js-anim .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
+
     .wg-hero { text-align: center; padding: clamp(90px, 14vh, 150px) var(--pad) 10px; }
     .wg-foot-back { display: flex; justify-content: center; padding: 0 var(--pad) clamp(60px, 9vh, 100px); margin-top: -30px; }
     .wg-hero__back {
@@ -94,6 +105,12 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <script>
+    // Прячем .reveal до появления только если анимация уместна (нет prefers-reduced-motion)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('js-anim');
+    }
+  </script>
 </head>
 <body>
 
@@ -143,15 +160,15 @@
 
   <!-- HERO -->
   <section class="wg-hero">
-    <a href="index.html#work" class="wg-hero__back" data-i18n="wg.back">← Back to home</a>
-    <h1 class="wg-hero__title" data-i18n="wg.title">All work</h1>
-    <p class="wg-hero__lead" data-i18n="wg.lead">Brands, websites and concepts — full-cycle, from idea to launch.</p>
+    <a href="index.html#work" class="wg-hero__back reveal" data-i18n="wg.back">← Back to home</a>
+    <h1 class="wg-hero__title reveal" data-i18n="wg.title">All work</h1>
+    <p class="wg-hero__lead reveal" data-i18n="wg.lead">Brands, websites and concepts — full-cycle, from idea to launch.</p>
   </section>
 
   <!-- ГАЛЕРЕЯ -->
   <main class="wg-grid">
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/artistic-1.png" alt="Artistic &amp; Co. — 1" loading="lazy" /></div>
@@ -169,7 +186,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/wassersport-1.png" alt="Sailing School Lang — 1" loading="lazy" /></div>
@@ -187,7 +204,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/meier-1.png" alt="Meier Tours — 1" loading="lazy" /></div>
@@ -205,7 +222,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/waeckerlin-1.png" alt="Wäckerlin — 1" loading="lazy" /></div>
@@ -223,7 +240,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/stoecklin-1.png" alt="Stöcklin — 1" loading="lazy" /></div>
@@ -241,7 +258,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/solbus-1.png" alt="Solbus Travel — 1" loading="lazy" /></div>
@@ -259,7 +276,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/nuessli-1.png" alt="Nüssli — 1" loading="lazy" /></div>
@@ -277,7 +294,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/korrodi-1.png" alt="GM Korrodi — 1" loading="lazy" /></div>
@@ -295,7 +312,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/avis-1.png" alt="AVIS Industrial — 1" loading="lazy" /></div>
@@ -313,7 +330,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/razgon-1.png" alt="Razgon Agency — 1" loading="lazy" /></div>
@@ -331,7 +348,7 @@
       </div>
     </article>
 
-    <article class="pcard">
+    <article class="pcard reveal">
       <div class="pcard__media">
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/white-river-1.png" alt="White River — 1" loading="lazy" /></div>
@@ -352,7 +369,7 @@
   </main>
 
   <div class="wg-foot-back">
-    <a href="index.html#work" class="wg-hero__back" data-i18n="wg.back">← Back to home</a>
+    <a href="index.html#work" class="wg-hero__back reveal" data-i18n="wg.back">← Back to home</a>
   </div>
 
   <!-- ФУТЕР -->
@@ -365,6 +382,27 @@
   <script>
     // Год в футере
     var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    // Мягкое появление блоков при скролле (как в Razgon / Artistic)
+    (function () {
+      var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (e) { e.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (ent) {
+        ent.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -7% 0px' });
+      els.forEach(function (e) {
+        var sibs = Array.prototype.slice.call(e.parentElement.querySelectorAll(':scope > .reveal'));
+        var i = sibs.indexOf(e);
+        if (i > 0) e.style.transitionDelay = (Math.min(i, 6) * 0.07) + 's';
+        io.observe(e);
+      });
+    })();
 
     // Карусели карточек
     document.querySelectorAll('.pcard').forEach(function (card) {
