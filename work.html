@@ -19,7 +19,11 @@
   <link rel="stylesheet" href="main.css?v=50" />
 
   <style id="work-gallery">
+    /* На этой странице меню НЕ фиксированное — уезжает при скролле */
+    .nav { position: absolute !important; }
+
     .wg-hero { text-align: center; padding: clamp(90px, 14vh, 150px) var(--pad) 10px; }
+    .wg-foot-back { display: flex; justify-content: center; padding: 0 var(--pad) clamp(60px, 9vh, 100px); margin-top: -30px; }
     .wg-hero__back {
       display: inline-block; margin-bottom: 22px; color: var(--muted);
       text-decoration: none; font-size: 14px; font-weight: 500;
@@ -149,7 +153,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/artistic-1.png" alt="Artistic &amp; Co. — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/artistic-2.png" alt="Artistic &amp; Co. — 2" loading="lazy" /></div>
@@ -169,24 +172,23 @@
     <article class="pcard">
       <div class="pcard__media">
         <div class="pcard__track">
-          <div class="pcard__slide"><img src="assets/projects/portfolio-1.png" alt="N design — Portfolio — 1" loading="lazy" /></div>
-          <div class="pcard__slide"><img src="assets/projects/portfolio-2.png" alt="N design — Portfolio — 2" loading="lazy" /></div>
-          <div class="pcard__slide"><img src="assets/projects/portfolio-3.png" alt="N design — Portfolio — 3" loading="lazy" /></div>
+          <div class="pcard__slide"><img src="assets/projects/wassersport-1.png" alt="Sailing School Lang — 1" loading="lazy" /></div>
+          <div class="pcard__slide"><img src="assets/projects/wassersport-2.png" alt="Sailing School Lang — 2" loading="lazy" /></div>
+          <div class="pcard__slide"><img src="assets/projects/wassersport-3.png" alt="Sailing School Lang — 3" loading="lazy" /></div>
         </div>
         <button class="pcard__nav pcard__nav--prev" type="button" aria-label="Previous">‹</button>
         <button class="pcard__nav pcard__nav--next" type="button" aria-label="Next">›</button>
         <div class="pcard__dots"></div>
       </div>
       <div class="pcard__body">
-        <span class="pcard__tag" data-i18n="wg.t.portfolio">Portfolio</span>
-        <h2 class="pcard__title">N design — Portfolio</h2>
-        <a href="https://natalia-arvut.github.io/portfolio-ch/" target="_blank" rel="noopener" class="pcard__btn">Website</a>
+        <span class="pcard__tag" data-i18n="wg.t.landing">Landing page</span>
+        <h2 class="pcard__title">Sailing School Lang</h2>
+        <a href="https://natalia-arvut.github.io/wassersport/" target="_blank" rel="noopener" class="pcard__btn">Website</a>
       </div>
     </article>
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/meier-1.png" alt="Meier Tours — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/meier-2.png" alt="Meier Tours — 2" loading="lazy" /></div>
@@ -205,7 +207,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/waeckerlin-1.png" alt="Wäckerlin — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/waeckerlin-2.png" alt="Wäckerlin — 2" loading="lazy" /></div>
@@ -224,7 +225,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/stoecklin-1.png" alt="Stöcklin — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/stoecklin-2.png" alt="Stöcklin — 2" loading="lazy" /></div>
@@ -243,7 +243,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/solbus-1.png" alt="Solbus Travel — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/solbus-2.png" alt="Solbus Travel — 2" loading="lazy" /></div>
@@ -262,7 +261,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/nuessli-1.png" alt="Nüssli — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/nuessli-2.png" alt="Nüssli — 2" loading="lazy" /></div>
@@ -281,7 +279,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/korrodi-1.png" alt="GM Korrodi — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/korrodi-2.png" alt="GM Korrodi — 2" loading="lazy" /></div>
@@ -300,7 +297,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/avis-1.png" alt="AVIS Industrial — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/avis-2.png" alt="AVIS Industrial — 2" loading="lazy" /></div>
@@ -319,7 +315,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/razgon-1.png" alt="Razgon Agency — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/razgon-2.png" alt="Razgon Agency — 2" loading="lazy" /></div>
@@ -338,7 +333,6 @@
 
     <article class="pcard">
       <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
         <div class="pcard__track">
           <div class="pcard__slide"><img src="assets/projects/white-river-1.png" alt="White River — 1" loading="lazy" /></div>
           <div class="pcard__slide"><img src="assets/projects/white-river-2.png" alt="White River — 2" loading="lazy" /></div>
@@ -355,27 +349,11 @@
       </div>
     </article>
 
-    <article class="pcard">
-      <div class="pcard__media">
-        <span class="pcard__concept" data-i18n="wg.concept">Concept</span>
-        <div class="pcard__track">
-          <div class="pcard__slide"><img src="assets/projects/wassersport-1.png" alt="Sailing School Lang — 1" loading="lazy" /></div>
-          <div class="pcard__slide"><img src="assets/projects/wassersport-2.png" alt="Sailing School Lang — 2" loading="lazy" /></div>
-          <div class="pcard__slide"><img src="assets/projects/wassersport-3.png" alt="Sailing School Lang — 3" loading="lazy" /></div>
-        </div>
-        <button class="pcard__nav pcard__nav--prev" type="button" aria-label="Previous">‹</button>
-        <button class="pcard__nav pcard__nav--next" type="button" aria-label="Next">›</button>
-        <div class="pcard__dots"></div>
-      </div>
-      <div class="pcard__body">
-        <span class="pcard__tag" data-i18n="wg.t.landing">Landing page</span>
-        <h2 class="pcard__title">Sailing School Lang</h2>
-        <a href="https://natalia-arvut.github.io/wassersport/" target="_blank" rel="noopener" class="pcard__btn">Website</a>
-      </div>
-    </article>
-
   </main>
 
+  <div class="wg-foot-back">
+    <a href="index.html#work" class="wg-hero__back" data-i18n="wg.back">← Back to home</a>
+  </div>
 
   <!-- ФУТЕР -->
   <footer class="footer">
