@@ -530,14 +530,40 @@ if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
   supa = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 
+// Real client reviews shown always (independent of the database)
+const SEED_REVIEWS = [
+  {
+    name: 'Giuseppe Li Causi',
+    role: 'CEO, Seilinus',
+    rating: 5,
+    language: 'it',
+    text: 'Natalia ha dato un’anima al nostro brand e ha realizzato per noi un sito web multipagina e multilingue di altissimo livello. Ha tradotto la visione di Seilinus in un’identità elegante e coerente — logo, presentazione e un sito curato in ogni dettaglio, veloce e impeccabile in ogni lingua. Ha capito subito cosa cercavamo ed è andata ben oltre le aspettative. Professionale, precisa e creativa: lavorare con lei è stato un piacere. La consiglio senza riserve.',
+    created_at: '2026-05-28T10:00:00.000Z'
+  },
+  {
+    name: 'Vsevolod Genzel',
+    role: 'Gründer, vsebank.space',
+    rating: 5,
+    language: 'de',
+    text: 'Natalia hat für unser Projekt vsebank.space hervorragende Arbeit geleistet. Das Design ist modern, klar und wirkt absolut hochwertig — genau das, was eine Finanzplattform braucht, um Vertrauen zu schaffen. Sie denkt mit, arbeitet schnell und liefert Qualität bis ins kleinste Detail. Die Zusammenarbeit war unkompliziert und durchweg professionell. Sehr empfehlenswert!',
+    created_at: '2026-06-11T10:00:00.000Z'
+  }
+];
+
 async function fetchAllReviews() {
-  if (!supa) return [];
-  const { data, error } = await supa
-    .from(REVIEWS_TABLE)
-    .select('name, role, text, rating, language, created_at')
-    .order('created_at', { ascending: false });
-  if (error || !data) return [];
-  return data.map(r => ({ ...r, date: r.created_at }));
+  if (supa) {
+    try {
+      // don't wait forever: if the DB is unreachable, show the embedded reviews
+      const query = supa
+        .from(REVIEWS_TABLE)
+        .select('name, role, text, rating, language, created_at')
+        .order('created_at', { ascending: false });
+      const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 1500));
+      const { data, error } = await Promise.race([query, timeout]);
+      if (!error && data) return [...data.map(r => ({ ...r, date: r.created_at })), ...SEED_REVIEWS];
+    } catch (e) { /* DB down — fall through to embedded reviews */ }
+  }
+  return [...SEED_REVIEWS];
 }
 
 async function pushReview(review) {
@@ -546,8 +572,7 @@ async function pushReview(review) {
   return !error;
 }
 
-async function renderReviews() {
-  const all = await fetchAllReviews();
+function paintReviews(all) {
   const T = window.i18nT || { en: {} };
   if (!all.length) {
     reviewsList.innerHTML = `
@@ -570,6 +595,14 @@ async function renderReviews() {
       <time class="review__date">${formatDate(r.date || r.created_at)}</time>
     </article>
   `).join('');
+}
+
+async function renderReviews() {
+  // show the embedded reviews instantly
+  paintReviews([...SEED_REVIEWS]);
+  // then quietly top up with live ones if the DB is available
+  const all = await fetchAllReviews();
+  paintReviews(all);
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function formatDate(d){const D=new Date(d);return D.toLocaleDateString('en-US',{day:'numeric',month:'long',year:'numeric'});}
