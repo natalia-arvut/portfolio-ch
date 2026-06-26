@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Unbounded:wght@500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="main.css?v=49" />
+  <link rel="stylesheet" href="main.css?v=50" />
   <style id="about-fix">
     /* Компактное фото и сертификаты-thumbnails */
     .about { grid-template-columns: auto 1fr !important; gap: 40px !important; align-items: start !important; }
@@ -53,6 +53,10 @@
     }
     /* Чуть больше воздуха между карточками портфолио */
     #work .cases { gap: 40px !important; }
+
+    /* Кнопка «Все работы» под сеткой портфолио */
+    .work-more { display: flex; justify-content: center; margin-top: 48px; }
+    .work-more__btn { min-width: 260px; text-align: center; box-sizing: border-box; }
 
     @media (max-width: 760px) {
       .about { grid-template-columns: 1fr !important; }
@@ -270,6 +274,10 @@
         </div>
       </article>
 
+    </div>
+
+    <div class="work-more">
+      <a href="work.html" class="btn btn--primary work-more__btn" data-i18n="work.more">View all work</a>
     </div>
   </section>
 
@@ -550,7 +558,7 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="i18n.js?v=49"></script>
-  <script src="script.js?v=49"></script>
+  <script src="i18n.js?v=50"></script>
+  <script src="script.js?v=50"></script>
 </body>
 </html>

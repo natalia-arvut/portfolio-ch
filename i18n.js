@@ -6,6 +6,18 @@
 const T = {
 
   en: {
+    'work.more': 'View all work',
+    'wg.title': 'All work',
+    'wg.lead': 'Brands, websites and concepts — full-cycle, from idea to launch.',
+    'wg.back': '← Back to home',
+    'wg.t.brandweb': 'Brand & Website',
+    'wg.t.web': 'Website',
+    'wg.t.app': 'Brand · Web · App',
+    'wg.t.ecom': 'E-commerce',
+    'wg.t.portfolio': 'Portfolio',
+    'wg.t.platform': 'Platform',
+    'wg.t.landing': 'Landing page',
+    'wg.concept': 'Concept',
     'meta.title': 'Nataly — design & development, turnkey',
     'meta.desc': 'Brands, websites and apps built end-to-end with AI — from idea to launch. Switzerland.',
 
@@ -209,6 +221,18 @@ const T = {
   },
 
   de: {
+    'work.more': 'Alle Arbeiten ansehen',
+    'wg.title': 'Alle Arbeiten',
+    'wg.lead': 'Marken, Websites und Konzepte — alles aus einer Hand, von der Idee bis zum Launch.',
+    'wg.back': '← Zurück zur Startseite',
+    'wg.t.brandweb': 'Marke & Website',
+    'wg.t.web': 'Website',
+    'wg.t.app': 'Marke · Web · App',
+    'wg.t.ecom': 'E-Commerce',
+    'wg.t.portfolio': 'Portfolio',
+    'wg.t.platform': 'Plattform',
+    'wg.t.landing': 'Landingpage',
+    'wg.concept': 'Konzept',
     'meta.title': 'Nataly — Design & Entwicklung, schlüsselfertig',
     'meta.desc': 'Marken, Websites und Apps aus einer Hand, mit KI — von der Idee bis zum Launch. Schweiz.',
 
@@ -412,6 +436,18 @@ const T = {
   },
 
   fr: {
+    'work.more': 'Voir tous les projets',
+    'wg.title': 'Tous les projets',
+    'wg.lead': 'Marques, sites web et concepts — de l’idée au lancement.',
+    'wg.back': '← Retour à l’accueil',
+    'wg.t.brandweb': 'Marque & Site web',
+    'wg.t.web': 'Site web',
+    'wg.t.app': 'Marque · Web · App',
+    'wg.t.ecom': 'E-commerce',
+    'wg.t.portfolio': 'Portfolio',
+    'wg.t.platform': 'Plateforme',
+    'wg.t.landing': 'Landing page',
+    'wg.concept': 'Concept',
     'meta.title': 'Nataly — design & développement, clé en main',
     'meta.desc': 'Marques, sites web et applications conçus de bout en bout avec l’IA — de l’idée au lancement. Suisse.',
 
@@ -615,6 +651,18 @@ const T = {
   },
 
   it: {
+    'work.more': 'Vedi tutti i lavori',
+    'wg.title': 'Tutti i lavori',
+    'wg.lead': 'Brand, siti web e concept — dall’idea al lancio.',
+    'wg.back': '← Torna alla home',
+    'wg.t.brandweb': 'Brand & Sito web',
+    'wg.t.web': 'Sito web',
+    'wg.t.app': 'Brand · Web · App',
+    'wg.t.ecom': 'E-commerce',
+    'wg.t.portfolio': 'Portfolio',
+    'wg.t.platform': 'Piattaforma',
+    'wg.t.landing': 'Landing page',
+    'wg.concept': 'Concept',
     'meta.title': 'Nataly — design & sviluppo, chiavi in mano',
     'meta.desc': 'Brand, siti web e app realizzati end-to-end con l’IA — dall’idea al lancio. Svizzera.',
 
